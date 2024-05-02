@@ -2,15 +2,16 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../../hooks/useFetch";
 import { useSelector } from "react-redux";
-import Img from "../../components/lazyloadimg/Img";
-import ContentWrepper from "../../components/contentWrapper/ContentWrepper";
+import Img from "../../../components/lazyloadimg/Img"
+import ContentWrepper from "../../../components/contentWrapper/ContentWrepper";
 
 function HeroBanner() {
   const [background, setbackground] = useState("");
   const [query, setquery] = useState("");
-  const navegate = useNavigate();
+  const navegate = useNavigate()
+
   const { url } = useSelector((state) => state.home);
   const { data, loading } = useFetch("/movie/upcoming");
   useEffect(() => {
