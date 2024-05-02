@@ -42,8 +42,8 @@ function App() {
 
   return (
     <BrowserRouter>
-{/*     <Header/>
- */}      <Routes>
+     <Header/>
+       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/mediaType/:id" element={<Detilse/>}/>
         <Route path="/search/:query" element={<SearchResult/>}/>
