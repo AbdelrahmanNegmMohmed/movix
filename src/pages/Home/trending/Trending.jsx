@@ -5,6 +5,8 @@ import ContentWrepper from "../../../components/contentWrapper/ContentWrepper";
 import { useState } from "react";
 import useFetch from "../../../hooks/useFetch";
 import Carsul from "../../../components/cursoul/Carsul";
+
+
 const Trending = () => {
   const [endpoint,setendpoint]=useState("day")
   const {data,loading} = useFetch(`/trending/all/${endpoint}`)

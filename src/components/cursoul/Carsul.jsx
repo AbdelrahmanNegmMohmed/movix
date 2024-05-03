@@ -7,13 +7,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import ContentWrepper from "../contentWrapper/ContentWrepper";
 import Geners from "../Geners/Geners";
+import ContentWrepper from "../contentWrapper/ContentWrepper";
 
 import Img from "../../components/lazyloadimg/Img";
 import PosterFallback from "../../assets/no-poster.png";
 import CircleRating from "../circleRating/CircleRating";
-function Carsul({ data, loading }) {
+function Carsul({ data, loading, endpoint }) {
   const carsouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ function Carsul({ data, loading }) {
                 ? url.poster + item.poster_path
                 : PosterFallback;
               return (
-                <div className="carouselItem" key={item.id} onClick={()=>navigate(`/${item.media_type}/${item.id}`)}>
+                <div className="carouselItem" key={item.id} onClick={()=>navigate(`/${item.media_type || endpoint }/${item.id}`)}>
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
