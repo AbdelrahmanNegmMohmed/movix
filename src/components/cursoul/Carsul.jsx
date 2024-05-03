@@ -17,7 +17,18 @@ function Carsul({ data, loading }) {
   const carsouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
-  const navigation = (diraction) => {};
+  const navigation = (diraction) => {
+    const container = carsouselContainer.current;
+
+
+  const scrollAmount = diraction === "left" ? container.scrollLeft - (container.offsetWidth + 20):
+  container.scrollLeft + (container.offsetWidth + 20);
+  container.scrollTo({
+    left:scrollAmount,
+    behavior:"smooth"
+  })
+
+  };
   const skItem = () => {
     return (
       <div className="skeletonItem">
@@ -42,13 +53,13 @@ function Carsul({ data, loading }) {
           onClick={() => navigation("right")}
         />
         {!loading ? (
-          <div className="carouselItems">
+          <div className="carouselItems" ref={carsouselContainer}>
             {data?.map((item) => {
               const posterUrl = item.poster_path
                 ? url.poster + item.poster_path
                 : PosterFallback;
               return (
-                <div className="carouselItem" key={item.id}>
+                <div className="carouselItem" key={item.id} onClick={()=>navigate(`/${item.media_type}/${item.id}`)}>
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
