@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchDataFromApi } from "./Utils/api";
 import { useDispatch, useSelector } from "react-redux";
-import { gitApiConfigration } from "./Store/HmoeSlice";
+import { gitApiConfigration,getGeneas } from "./Store/HmoeSlice";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -21,6 +21,7 @@ function App() {
 
   useEffect(() => {
     fetchApiConfig();
+    genresCall()
   }, []);
 
 
@@ -37,6 +38,23 @@ function App() {
       dispatch(gitApiConfigration(url));
     });
   };
+
+  const genresCall = async() =>{
+    let promisis = []
+    let endPoints = ["tv", "movie"]
+    let allGenres = {}
+    endPoints.forEach((url)=>{
+      promisis.push(fetchDataFromApi(`/genre/${url}/list`))
+    })
+
+    const data = await Promise.all(promisis);
+    console.log(data,"data");
+    data.map(({genres})=>{
+      return genres.map((item)=>(allGenres[item.id]=item))
+    })
+    dispatch(getGeneas(allGenres))
+
+  }
 
 
 
