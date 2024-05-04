@@ -41,6 +41,9 @@ const Footer = () => {
                         <FaLinkedin />
                     </span>
                 </div>
+                <div className="men">
+                <h4>Produced by Negm 2024</h4>
+                </div>
             </ContentWrepper>
         </footer>
     );

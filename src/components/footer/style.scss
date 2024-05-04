@@ -65,4 +65,24 @@
             }
         }
     }
+    .men {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        margin: 0 15px;
+        color: white;
+        font-weight: 200;
+        position: relative;
+        padding-top: 50px;
+        &.searchIcon {
+            margin-right: 0;
+        }
+        svg {
+            font-size: 10px;
+        }
+        cursor: pointer;
+        &:hover {
+            color: var(--pink);
+        }
+    }
 }
