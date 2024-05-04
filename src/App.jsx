@@ -7,10 +7,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home/Home";
-import Detilse from "./pages/details/Detilse";
 import PageNotFound from "./pages/404/PageNotFound";
 import SearchResult from "./pages/serchresult/SearchResult";
 import Explore from "./pages/explore/Explore";
+import Detailse from "./pages/details/Details";
 
 
 function App() {
@@ -60,16 +60,16 @@ function App() {
 
   return (
     <BrowserRouter>
-     <Header/>
-       <Routes>
+        <Header/>
+         <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/mediaType/:id" element={<Detilse/>}/>
+        <Route path="/:mediaType/:id" element={<Detailse />}/>
         <Route path="/search/:query" element={<SearchResult/>}/>
         <Route path="/explore/:mediaType" element={<Explore/>}/>
         <Route path="*" element={<PageNotFound/>}/>
       </Routes>
-     <Footer/>
-    </BrowserRouter>
+      <Footer/>
+     </BrowserRouter>
   );
 }
 export default App;
