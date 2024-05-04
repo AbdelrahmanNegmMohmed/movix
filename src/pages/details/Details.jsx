@@ -5,6 +5,8 @@ import "./style.scss";
 import DetialsBanner from './DetailsBanner/DetialsBanner';
 import Cast from './cast/Cast';
 import VideosSection from './videoSection/VideoSeaction';
+import Similar from './carousels/Similar';
+import Recommendation from './carousels/Recomindattion';
 function Detailse() {
   const {mediaType,id} = useParams();
   const {data, loading} = useFetch(`/${mediaType}/${id}/videos`);
@@ -15,6 +17,9 @@ function Detailse() {
       <DetialsBanner  video={data?.resuls?.[0]} crew={credits?.crew}/>
       <Cast data={credits?.cast} loading={creditsLoading}/>
       <VideosSection data={data} loading={loading}/>
+      <Similar mediaType={mediaType} id={id}/>
+      <Recommendation mediaType={mediaType} id={id}/>
+
     </div>
   );
 };

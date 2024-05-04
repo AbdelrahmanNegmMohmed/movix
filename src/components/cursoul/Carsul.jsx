@@ -13,7 +13,7 @@ import ContentWrepper from "../contentWrapper/ContentWrepper";
 import Img from "../../components/lazyloadimg/Img";
 import PosterFallback from "../../assets/no-poster.png";
 import CircleRating from "../circleRating/CircleRating";
-function Carsul({ data, loading, endpoint }) {
+function Carsul({ data, loading, endpoint,title }) {
   const carsouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -44,6 +44,7 @@ function Carsul({ data, loading, endpoint }) {
   return (
     <div className="carousel">
       <ContentWrepper>
+        {title && <div className="carouselTitle">{title}</div>}
         <BsFillArrowLeftCircleFill
           className="carouselLeftNav arrow"
           onClick={() => navigation("left")}
